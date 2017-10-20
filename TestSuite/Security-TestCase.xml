@@ -30,7 +30,7 @@
    <soapenv:Header/>
    <soapenv:Body>
       <sec:login>
-         <sec:name>scott2</sec:name>
+         <sec:name>pavel2</sec:name>
          <sec:password>tiger</sec:password>
       </sec:login>
    </soapenv:Body>
