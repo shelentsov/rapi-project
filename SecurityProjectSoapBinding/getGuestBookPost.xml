@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:operation isOneWay="false" action="" name="getGuestBookPost" bindingOperationName="getGuestBookPost" type="Request-Response" outputName="getGuestBookPostResponse" inputName="getGuestBookPostRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional" id="8adca8ea-909a-44ee-bc33-7b2a96721648" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+      <con:settings><con:setting id="8adca8ea-909a-44ee-bc33-7b2a96721648fileName">getGuestBookPost</con:setting></con:settings>
+      <con:call name="Request 1" id="fd72205a-9cec-418c-b03e-e0e30e5be80f" defaultOutgoingWss="" defaultIncomingWss="">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>http://localhost:8093/SecurityProject/services/SecurityProject</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sec="http://securityproject.SmartBear.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sec:getGuestBookPost>
+         <sec:UserID>?</sec:UserID>
+         <sec:postID>?</sec:postID>
+      </sec:getGuestBookPost>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:authType>No Authorization</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://securityproject.SmartBear.com/SecurityProject/getGuestBookPostRequest"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    </con:operation>

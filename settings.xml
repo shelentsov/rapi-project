@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default environment" name="SQL Injection Sample Project" resourceRoot="${projectDir}" soapui-version="6.0.0" abortOnError="false" runType="SEQUENTIAL" id="a80b3d8b-a185-4f0b-9215-ccc8551d4bd2" updated="2.2.0-RC 20171018-1153" defaultScriptLanguage="Groovy" compositeProjectFormat="1.3" xmlns:con="http://eviware.com/soapui/config">
+  <con:description>Demonstrates checking a local virtual service for vulnerability to SQL injections.</con:description>
+  <con:settings>
+    <con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.support.ProSecurityTestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Environment" value="Default"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="TestSuite" value="TestSuite 1"/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="soapui-setings.xml Password" value=""/>
+  <con:entry key="SecurityTest" value="&lt;all>"/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="Save Project" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="SecurityTestRunner Path" value="C:\Program Files\SmartBear\soapUI-Pro-4.6.1\bin"/>
+  <con:entry key="Export JUnit Results" value="true"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Export All" value="false"/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="Report Format(s)" value="PDF"/>
+  <con:entry key="TestCase" value="TestCase 1"/>
+  <con:entry key="Print Report" value="true"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="Root Folder" value="C:\TestReport\"/>
+  <con:entry key="Select Report Type" value=""/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="Endpoint" value=""/>
+</xml-fragment>]]></con:setting>
+    <con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.ProTestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Environment" value="Default"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="TestSuite" value="&lt;all>"/>
+  <con:entry key="Report to Generate" value=""/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="soapui-setings.xml Password" value=""/>
+  <con:entry key="TestRunner Path" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="Save Project" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="Export JUnit Results" value="false"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="Export All" value="false"/>
+  <con:entry key="Report Format(s)" value=""/>
+  <con:entry key="TestCase" value="&lt;all>"/>
+  <con:entry key="Print Report" value="false"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="Root Folder" value=""/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="Endpoint" value=""/>
+</xml-fragment>]]></con:setting>
+  <con:setting id="a80b3d8b-a185-4f0b-9215-ccc8551d4bd2fileName">SQL-Injection-Sample-Project-readyapi-project</con:setting></con:settings>
+  
+  
+  
+  <con:vcsConfiguration><con:vcsName>Git</con:vcsName><con:repositoryIdentifier>https://github.com/shelentsov/rapi-project.git</con:repositoryIdentifier></con:vcsConfiguration><con:savedRecentRuns>1</con:savedRecentRuns><con:requirements>
+    <con:requirement>
+      <con:id>1</con:id>
+      <con:name>Can we login</con:name>
+      <con:description>Can we login</con:description>
+      <con:status>In Scope</con:status>
+      <con:links/>
+      <con:testCases/>
+    </con:requirement>
+  </con:requirements>
+  <con:properties><con:property><con:name>efef</con:name><con:value>11111</con:value></con:property><con:property><con:name>newProp</con:name><con:value>newVal</con:value></con:property></con:properties>
+  <con:wssContainer/>
+  <con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/><con:oAuth2ProfileContainer>
+    <con:oAuth2Profile>
+      <con:name>OAuth 2 - Profile 1</con:name>
+      <con:type>OAuth 2.0</con:type>
+      <con:accessTokenPosition>HEADER</con:accessTokenPosition>
+      <con:refreshAccessTokenMethod>AUTOMATIC</con:refreshAccessTokenMethod>
+    </con:oAuth2Profile>
+  </con:oAuth2ProfileContainer>
+  <con:oAuth1ProfileContainer/>
+  <con:eventHandlers type="SecurityTestRunListener.afterSecurityScanRequest" name="SecurityTestRunListener.afterSecurityScanRequest">
+    <con:script disabled="true">// create groovyUtils and XmlHolder for response of Request 1 request
+def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def stepName = context.getCurrentStep().getLabel()
+
+// if 200 HTTP status code - Enable Assertion
+if (testRunner.testCase.testSteps[stepName].testRequest.response.responseHeaders["#status#"].contains("HTTP/1.1 200 OK")){
+	
+	log.info "ENABLED"
+	testRunner.testCase.testSteps[stepName].assertions["Valid HTTP Status Codes"].disabled = false
+// else disable it
+} else {
+	log.info "DISABLED"
+	testRunner.testCase.testSteps[stepName].assertions["Valid HTTP Status Codes"].disabled = true
+}</con:script>
+  </con:eventHandlers>
+  <con:sensitiveInformation>
+    <ProjectSpecificExposureList>null###null</ProjectSpecificExposureList>
+  </con:sensitiveInformation>
+  <con:environment name="DEV" id="8ddac51c-bcd2-4f1a-98fe-eaa034fd043e">
+    <con:service type="SOAP" name="SecurityProjectSoapBinding">
+      <con:endpoint domain="" incomingWss="" outgoingWss="" password="" username="" wssTimeToLive="" wssType="" authProfile="No Authorization">http://localhost:8093/webServices/services/SecurityProject</con:endpoint>
+    </con:service>
+    <con:property><con:name>efef</con:name><con:value/></con:property><con:property><con:name>newProp</con:name><con:value/></con:property><con:databaseConnectionContainer/>
+  <con:jmsConnectionContainer/></con:environment>
+  <con:authRepository/>
+<con:tags/></con:soapui-project>

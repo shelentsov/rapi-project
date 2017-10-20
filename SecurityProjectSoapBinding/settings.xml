@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="SecurityProjectSoapBinding" type="wsdl" bindingName="{http://securityproject.SmartBear.com}SecurityProjectSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8093/SecurityProject/wsdl/SecurityProject.wsdl" id="2939e5e2-c84d-43e7-8111-3952150572cb" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+    <con:settings><con:setting id="2939e5e2-c84d-43e7-8111-3952150572cbfileName">SecurityProjectSoapBinding</con:setting></con:settings>
+    <con:definitionCache type="TEXT" rootPart="http://localhost:8093/SecurityProject/wsdl/SecurityProject.wsdl">
+      <con:part>
+        <con:url>http://localhost:8093/SecurityProject/wsdl/SecurityProject.wsdl</con:url>
+        <con:content><![CDATA[<wsdl:definitions targetNamespace="http://securityproject.SmartBear.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://securityproject.SmartBear.com" xmlns:intf="http://securityproject.SmartBear.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://securityproject.SmartBear.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="login">
+        <complexType>
+          <sequence>
+            <element name="name" type="xsd:string"/>
+            <element name="password" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="loginResponse">
+        <complexType>
+          <sequence>
+            <element name="loginReturn" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="logout">
+        <complexType>
+          <sequence>
+            <element name="sessionID" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="logoutResponse">
+        <complexType>
+          <sequence>
+            <element name="logoutReturn" type="xsd:boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="guestBookPost">
+        <complexType>
+          <sequence>
+            <element name="sessionID" type="xsd:string"/>
+            <element name="post" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="guestBookPostResponse">
+        <complexType>
+          <sequence>
+            <element name="guestBookPostReturn" type="xsd:boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getGuestBookPost">
+        <complexType>
+          <sequence>
+            <element name="UserID" type="xsd:string"/>
+            <element name="postID" type="xsd:string"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getGuestBookPostResponse">
+        <complexType>
+          <sequence>
+            <element name="getGuestBookPostReturn" type="xsd:boolean"/>
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="guestBookPostResponse">
+    <wsdl:part element="impl:guestBookPostResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="guestBookPostRequest">
+    <wsdl:part element="impl:guestBookPost" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logoutResponse">
+    <wsdl:part element="impl:logoutResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="logoutRequest">
+    <wsdl:part element="impl:logout" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGuestBookPostRequest">
+    <wsdl:part element="impl:getGuestBookPost" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part element="impl:login" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getGuestBookPostResponse">
+    <wsdl:part element="impl:getGuestBookPostResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part element="impl:loginResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SecurityProject">
+    <wsdl:operation name="login">
+      <wsdl:input message="impl:loginRequest" name="loginRequest"></wsdl:input>
+      <wsdl:output message="impl:loginResponse" name="loginResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdl:input message="impl:logoutRequest" name="logoutRequest"></wsdl:input>
+      <wsdl:output message="impl:logoutResponse" name="logoutResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guestBookPost">
+      <wsdl:input message="impl:guestBookPostRequest" name="guestBookPostRequest"></wsdl:input>
+      <wsdl:output message="impl:guestBookPostResponse" name="guestBookPostResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGuestBookPost">
+      <wsdl:input message="impl:getGuestBookPostRequest" name="getGuestBookPostRequest"></wsdl:input>
+      <wsdl:output message="impl:getGuestBookPostResponse" name="getGuestBookPostResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SecurityProjectSoapBinding" type="impl:SecurityProject">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="login">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="loginRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logout">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="logoutRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="logoutResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="guestBookPost">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="guestBookPostRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="guestBookPostResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGuestBookPost">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getGuestBookPostRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getGuestBookPostResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SecurityProjectService">
+    <wsdl:port binding="impl:SecurityProjectSoapBinding" name="SecurityProject">
+      <wsdlsoap:address location="http://localhost:8093/SecurityProject/services/SecurityProject"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+        <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+      </con:part>
+    </con:definitionCache>
+    <con:endpoints>
+      <con:endpoint>http://localhost:8093/SecurityProject/services/SecurityProject</con:endpoint>
+      <con:endpoint>http://localhost:8093/webServices/services/SecurityProject</con:endpoint>
+    </con:endpoints>
+    
+    
+    
+    
+  </con:interface>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:securityTest id="a3a146cb-1820-44dc-993f-21afe5712a17" testCaseId="c69b42f3-8bd8-4fd3-b4d7-45c1395f6a57" name="SecurityTest Case" failSecurityTestOnScanErrors="true" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="a3a146cb-1820-44dc-993f-21afe5712a17fileName">SecurityTest-Case</con:setting></con:settings><con:testStepSecurityTest><con:testStepId>193e9c5e-6e38-48cd-b2d9-4fea35297ee1</con:testStepId><con:testStepSecurityScan type="SQLInjectionScan" name="SQL Injection" id="5df89011-05c2-49ef-aa1a-12e34fed0483" applyForFailedStep="false" disabled="false"><con:settings/><con:config xsi:type="con:SQLInjectionScan" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <con:sqlInjectionStrings>' or '1'='1</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>'--</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>1'</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>admin'--</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>/*!10000%201/0%20*/</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>/*!10000 1/0 */</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>1/0</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>'%20o/**/r%201/0%20--</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>' o/**/r 1/0 --</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>;</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>'%20and%201=2%20--</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>' and 1=2 --</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>test�%20UNION%20select%201,%20@@version,%201,%201;�</con:sqlInjectionStrings>
+              <con:sqlInjectionStrings>test� UNION select 1, @@version, 1, 1;�</con:sqlInjectionStrings>
+            </con:config><con:assertion type="XPath Match" name="XPath Match" id="fb90677c-4d92-4cfb-8a65-60fb1d1d278e">
+              <con:configuration>
+                <path>declare namespace ns1='http://securityproject.SmartBear.com';
+exists(//ns1:loginResponse[1]/ns1:loginReturn[1])</path>
+                <content>false</content>
+                <allowWildcards>false</allowWildcards>
+                <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+                <ignoreComments>false</ignoreComments>
+              </con:configuration>
+            </con:assertion><con:assertion type="Sensitive Information Exposure" name="Sensitive Information Exposure" id="1afa55ae-851c-4aff-ba96-bfe4a6fd923b">
+              <con:configuration/>
+            </con:assertion><con:testStep xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/><con:checkedParameters xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <con:parameters label="password1" parameterName="Request" xpath="declare namespace web='http://securityproject.SmartBear.com'; //web:login[1]/web:password[1]" checked="true"/>
+              <con:parameters label="name" parameterName="Request" xpath="declare namespace web='http://securityproject.SmartBear.com'; //web:login[1]/web:name[1]" checked="true"/>
+            </con:checkedParameters><con:executionStrategy xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+              <con:strategy>ONE_BY_ONE</con:strategy>
+              <con:delay>100</con:delay>
+            </con:executionStrategy></con:testStepSecurityScan></con:testStepSecurityTest><con:properties/><con:reportParameters/></con:securityTest>

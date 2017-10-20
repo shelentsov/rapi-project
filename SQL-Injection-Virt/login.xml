@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:mockOperation name="login" id="c634f9ac-d094-4aa9-97ee-dcd8c25196f5" interface="SecurityProjectSoapBinding" operation="login" xmlns:con="http://eviware.com/soapui/config">
+      <con:settings><con:setting id="c634f9ac-d094-4aa9-97ee-dcd8c25196f5fileName">login</con:setting></con:settings>
+      <con:defaultResponse>Invalid Login</con:defaultResponse>
+      <con:dispatchStyle>SCRIPT</con:dispatchStyle>
+      <con:dispatchPath>def groovyUtils = new com.eviware.soapui.support.GroovyUtils( context )
+def holder = groovyUtils.getXmlHolder( mockRequest.requestContent )
+
+def username = holder.getNodeValue( "declare namespace sec='http://securityproject.SmartBear.com'; //sec:login[1]/sec:name[1]" )
+def password = holder.getNodeValue( "declare namespace sec='http://securityproject.SmartBear.com'; //sec:login[1]/sec:password[1]" )
+
+// validate
+if (username.equals("scott") &amp;&amp; (password.equals("tiger") || password.equals("1\'"))) {
+	
+	// seems ok
+	def sessionid = String.valueOf( Math.random() ).substring( 2 )
+
+	requestContext.sessionid = sessionid
+	return "OK Response"
+}
+
+// else 
+return "Invalid Login"</con:dispatchPath>
+      <con:dispatchXPath/><con:routeScript/><con:response name="OK Response" id="8d87edf9-5ec2-4594-806d-f9e255e65fec" httpResponseStatus="200" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <loginResponse xmlns="http://securityproject.SmartBear.com">
+         <loginReturn>${sessionid}</loginReturn>
+      </loginResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://securityproject.SmartBear.com/SecurityProject/loginResponse"/>
+      </con:response>
+      <con:response name="Invalid Login" id="0bb14db6-8e51-44b9-9be6-637cdf666320" httpResponseStatus="500" encoding="UTF-8" dataSource="">
+        <con:settings/>
+        <con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sam="http://www.soapui.org/sample/">
+   <soapenv:Body>
+      <soapenv:Fault>
+         <faultcode>Client</faultcode>
+         <faultstring>Invalid Login</faultstring>
+         <detail>
+            <sam:loginFault>The login credentials are invalid</sam:loginFault>
+         </detail>
+      </soapenv:Fault>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://securityproject.SmartBear.com/SecurityProject/loginResponse"/>
+      </con:response>
+      <con:dispatchConfig/>
+    </con:mockOperation>

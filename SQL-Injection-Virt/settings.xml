@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:mockService id="1dd762c4-ed00-437f-9024-164527512e33" port="8093" path="/" host="localhost" name="SQL Injection Virt" xmlns:con="http://eviware.com/soapui/config">
+    <con:settings>
+      <con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting>
+    <con:setting id="1dd762c4-ed00-437f-9024-164527512e33fileName">SQL-Injection-Virt</con:setting></con:settings>
+    <con:properties/>
+    <con:constraints>
+      <con:congestion>0</con:congestion>
+      <con:inputBandwidth>-1</con:inputBandwidth>
+      <con:outputBandwidth>-1</con:outputBandwidth>
+      <con:maxThreadPoolCapacity>10</con:maxThreadPoolCapacity>
+      <con:coreThreadPoolCapacity>5</con:coreThreadPoolCapacity>
+      <con:minApplicationDelay>0</con:minApplicationDelay>
+      <con:virtError>
+        <con:start>-1</con:start>
+      </con:virtError>
+    </con:constraints>
+    <con:dataSources/>
+    <con:headerValidator type="NONE"/>
+    
+  </con:mockService>
