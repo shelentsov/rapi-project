@@ -31,7 +31,7 @@
    <soapenv:Body>
       <sec:login>
          <sec:name>pavel2</sec:name>
-         <sec:password>tiger</sec:password>
+         <sec:password>somepass</sec:password>
       </sec:login>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request>
